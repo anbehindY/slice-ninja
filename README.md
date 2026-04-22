@@ -42,7 +42,7 @@ Copy the `.claude` folder into your project root:
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/slice-ninja.git
+git clone https://github.com/anbehindY/slice-ninja.git
 
 # Copy into your project
 cp -r slice-ninja/.claude your-project/.claude
