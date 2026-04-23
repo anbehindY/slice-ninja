@@ -59,14 +59,6 @@ npx slice-ninja init --force      # overwrite existing files
 npx slice-ninja uninstall         # remove slice-ninja from .claude/
 ```
 
-### Claude.ai (upload)
-
-1. Download the [latest release](../../releases) zip file
-2. Go to **Settings → Features → Skills**
-3. Upload the zip
-
-> Note: Claude.ai skills and Claude Code skills don't sync automatically. Install in both if you use both.
-
 ## Commands
 
 | Command | Purpose | Arguments |
@@ -127,10 +119,9 @@ Small teams (1–5 developers) building complex systems — offline-first apps, 
 
 ## Compatibility
 
-Works with any tool that supports the `SKILL.md` format:
+Works with any tool that reads `.claude/skills/` and `.claude/commands/`:
 
-- ✅ Claude Code
-- ✅ Claude.ai (via zip upload)
+- ✅ Claude Code (terminal CLI + VSCode extension)
 - ✅ Cursor
 - ✅ Codex CLI
 - ✅ Gemini CLI
