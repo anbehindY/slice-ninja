@@ -36,20 +36,9 @@ Slices should be **small** — small enough to skip backlogs most of the time.
 
 ## Install
 
-Pick whichever matches your setup. All three put the same files in place.
+Works with **any** Claude Code client (terminal CLI, VSCode extension, Cursor, Codex CLI, Gemini CLI). Pick whichever option fits.
 
-### Option 1 — Claude Code plugin (recommended)
-
-One-time marketplace add, then install:
-
-```
-/plugin marketplace add anbehindY/slice-ninja
-/plugin install slice-ninja@slice-ninja
-```
-
-Auto-updates on `/plugin marketplace update`. Commands show up as `/slice-ninja:slice-light`, `/slice-ninja:slice-deep`, etc.
-
-### Option 2 — npx (any project, any editor)
+### Option 1 — npx (recommended, works everywhere)
 
 From your project root:
 
@@ -57,7 +46,7 @@ From your project root:
 npx slice-ninja init
 ```
 
-Copies `skills/slice-ninja/` and the `slice-*.md` commands into `./.claude/`. Commit the folder so your team gets it automatically:
+Copies `skills/slice-ninja/` and `slice-*.md` commands into `./.claude/`. Commit the folder so your team gets it automatically:
 
 ```bash
 git add .claude
@@ -72,13 +61,26 @@ npx slice-ninja init --force      # overwrite existing files
 npx slice-ninja uninstall         # remove slice-ninja from .claude/
 ```
 
-### Option 3 — manual copy
+### Option 2 — manual copy
+
+No Node.js required:
 
 ```bash
 git clone https://github.com/anbehindY/slice-ninja.git
 cp -r slice-ninja/skills/slice-ninja your-project/.claude/skills/
 cp slice-ninja/commands/slice-*.md your-project/.claude/commands/
 ```
+
+### Option 3 — Claude Code plugin (terminal CLI only)
+
+> Requires the Claude Code terminal CLI. The VSCode extension, Cursor, and similar clients don't currently support `/plugin` — use Option 1 or 2 for those.
+
+```
+/plugin marketplace add anbehindY/slice-ninja
+/plugin install slice-ninja@slice-ninja
+```
+
+Auto-updates on `/plugin marketplace update`. Commands are namespaced as `/slice-ninja:slice-light`, `/slice-ninja:slice-deep`, etc.
 
 ### Claude.ai (upload)
 
