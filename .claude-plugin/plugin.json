@@ -1,0 +1,19 @@
+{
+  "name": "slice-ninja",
+  "version": "1.0.0",
+  "description": "Plan, design, and document product features as vertical slices using the 5-block compact framework (outcome, boundaries, design, delivery, risk & rollout).",
+  "author": {
+    "name": "anbehindY",
+    "url": "https://github.com/anbehindY"
+  },
+  "homepage": "https://github.com/anbehindY/slice-ninja",
+  "repository": "https://github.com/anbehindY/slice-ninja",
+  "license": "MIT",
+  "keywords": [
+    "vertical-slice",
+    "product-planning",
+    "architecture",
+    "adr",
+    "claude-skill"
+  ]
+}

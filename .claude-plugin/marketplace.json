@@ -1,0 +1,17 @@
+{
+  "name": "slice-ninja",
+  "owner": {
+    "name": "anbehindY",
+    "url": "https://github.com/anbehindY"
+  },
+  "plugins": [
+    {
+      "name": "slice-ninja",
+      "source": "./",
+      "description": "Plan features as vertical slices using the 5-block compact framework. 8 slash commands for scoping, architecture, tests, and rollout.",
+      "version": "1.0.0",
+      "category": "planning",
+      "keywords": ["vertical-slice", "product-planning", "architecture", "adr"]
+    }
+  ]
+}

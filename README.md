@@ -36,28 +36,48 @@ Slices should be **small** — small enough to skip backlogs most of the time.
 
 ## Install
 
-### Claude Code (recommended)
+Pick whichever matches your setup. All three put the same files in place.
 
-Copy the `.claude` folder into your project root:
+### Option 1 — Claude Code plugin (recommended)
 
-```bash
-# Clone the repo
-git clone https://github.com/anbehindY/slice-ninja.git
+One-time marketplace add, then install:
 
-# Copy into your project
-cp -r slice-ninja/.claude your-project/.claude
-
-# Or if you already have a .claude folder, merge:
-cp -r slice-ninja/.claude/skills/slice-ninja your-project/.claude/skills/
-cp slice-ninja/.claude/commands/slice-*.md your-project/.claude/commands/
+```
+/plugin marketplace add anbehindY/slice-ninja
+/plugin install slice-ninja@slice-ninja
 ```
 
-Commit it so your team gets it automatically:
+Auto-updates on `/plugin marketplace update`. Commands show up as `/slice-ninja:slice-light`, `/slice-ninja:slice-deep`, etc.
+
+### Option 2 — npx (any project, any editor)
+
+From your project root:
 
 ```bash
-cd your-project
+npx slice-ninja init
+```
+
+Copies `skills/slice-ninja/` and the `slice-*.md` commands into `./.claude/`. Commit the folder so your team gets it automatically:
+
+```bash
 git add .claude
 git commit -m "Add slice-ninja skill"
+```
+
+Other subcommands:
+
+```bash
+npx slice-ninja init --dry-run    # preview changes
+npx slice-ninja init --force      # overwrite existing files
+npx slice-ninja uninstall         # remove slice-ninja from .claude/
+```
+
+### Option 3 — manual copy
+
+```bash
+git clone https://github.com/anbehindY/slice-ninja.git
+cp -r slice-ninja/skills/slice-ninja your-project/.claude/skills/
+cp slice-ninja/commands/slice-*.md your-project/.claude/commands/
 ```
 
 ### Claude.ai (upload)

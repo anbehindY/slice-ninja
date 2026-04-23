@@ -1,0 +1,39 @@
+{
+  "name": "slice-ninja",
+  "version": "1.0.0",
+  "description": "Plan, design, and document product features as vertical slices using the 5-block compact framework. Installs the slice-ninja Claude skill + 8 slash commands into any project.",
+  "bin": {
+    "slice-ninja": "bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "commands/",
+    ".claude-plugin/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "claude-skill",
+    "vertical-slice",
+    "product-planning",
+    "architecture",
+    "adr"
+  ],
+  "author": "anbehindY",
+  "license": "MIT",
+  "homepage": "https://github.com/anbehindY/slice-ninja",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anbehindY/slice-ninja.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anbehindY/slice-ninja/issues"
+  }
+}

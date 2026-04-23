@@ -1,2 +1,4 @@
 .DS_Store
 *.zip
+*:Zone.Identifier
+node_modules/
