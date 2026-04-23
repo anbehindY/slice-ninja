@@ -1,6 +1,6 @@
 {
   "name": "slice-ninja",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Plan, design, and document product features as vertical slices using the 5-block compact framework. Installs the slice-ninja Claude skill + 8 slash commands into any project.",
   "bin": {
     "slice-ninja": "bin/install.js"
