@@ -19,33 +19,42 @@ Generates editable markdown files that plan features as vertical slices — each
 ### What each block does — and why it earns its spot
 
 #### 1. Outcome
-**What goes in:** problem statement, one-sentence goal, testable success criteria.
-**Why it matters:** gives every later decision something to measure against. Without explicit success criteria you can't tell when the slice is actually done — "looks right" becomes the bar, and scope creeps forever.
+- **In it:** problem, one-sentence goal, testable success criteria
+- **Why it's there:** gives every later decision something to measure against. No success criteria = no way to say "done."
 
 #### 2. Boundaries
-**What goes in:** functional scope, non-functional requirements (performance, reliability), hard constraints, and an **explicit out-of-scope list**.
-**Why it matters:** the out-of-scope list is the one that saves you. Features creep unless you name exactly what you're *not* building. The constraints line keeps the designer and the engineer honest about what can't be changed later.
+- **In it:** functional scope, non-functional requirements, hard constraints, and an **explicit out-of-scope list**
+- **Why it's there:** the out-of-scope list is what saves you. Name what you're *not* building, or features creep.
 
 #### 3. Design
-**What goes in:** user flows (happy path + failure branches), entities with key fields, state machines for every status field, invariants, cross-cutting concerns.
-**Why it matters:** state machines kill bugs — if you write down the legal transitions, the illegal ones can't silently happen in prod. Documenting failure branches forces you to answer "what if the network drops here?" during design, not at 2am in the on-call rotation.
+- **In it:** user flows (happy path + failure branches), entities, state machines, invariants, cross-cutting concerns
+- **Why it's there:** state machines kill bugs — write down the legal transitions and the illegal ones can't silently happen in prod. Failure branches answer "what if the network drops here?" during design, not at 2am on call.
 
 #### 4. Delivery
-**What goes in:** API contracts (request, response, errors, retry/idempotency), technical decisions with reasoning, a **fixed-vs-deferred** table, and linked ADRs.
-**Why it matters:** the contract is the seam between planning and building — nailing it down keeps implementation faithful to the design. The fixed-vs-deferred split lets you ship a lean v1 without losing track of what you consciously punted (and why).
+- **In it:** API contracts (request, response, errors, retry), decisions with reasoning, **fixed-vs-deferred** table, linked ADRs
+- **Why it's there:** locks the seam between planning and building. Fixed-vs-deferred lets you ship a lean v1 without forgetting what you punted.
 
 #### 5. Risk & Rollout
-**What goes in:** risks with severity, mitigation, and **detection signal**; a phased rollout with gates between phases.
-**Why it matters:** naming the detection signal means you'll actually notice the failure mode in prod instead of hearing about it from users. Rollout gates prevent the classic "shipped everything Friday, paged all weekend" — you only flip the next phase once the previous one is provably stable.
+- **In it:** risks with severity, mitigation, and **detection signal**; phased rollout with gates
+- **Why it's there:** the detection signal is how you spot failures before your users do. Gates prevent "shipped everything Friday, paged all weekend."
 
 ### Docs that work for humans AND AI
 
-Each file this skill writes is **dual-purpose**:
+Each file this skill writes is **dual-purpose**.
 
-- **Fast for humans to skim** — stable short headers, tables instead of prose, explicit out-of-scope lists, mandatory invariants. A PM or a new dev can land on any slice and grasp it in under a minute.
-- **Structured for AI to ingest** — consistent section names across slices, fixed enums (`LIGHT / DEEP`, `P0 / P1 / P2`, `H / M / L`), cross-references between slices and ADRs. The skill itself re-reads the slice map, dependency slices, and ADRs before generating the next slice — the format is the schema that makes that possible. Paste `docs/slices/CONTEXT.md` into any new chat and the AI picks up where you left off.
+**Fast for humans to skim:**
+- Short, stable headers
+- Tables instead of prose
+- Explicit out-of-scope lists and mandatory invariants
+- A PM or new dev grasps any slice in under a minute
 
-That's why the templates look the way they do (tables, checkboxes, fixed statuses) rather than free-form prose — the shape of each doc is load-bearing, not decorative.
+**Structured for AI to ingest:**
+- Consistent section names across every slice
+- Fixed enums: `LIGHT / DEEP`, `P0 / P1 / P2`, `H / M / L`
+- Cross-references between slices and ADRs
+- Claude re-reads existing docs before generating new ones — the format is the schema that makes this possible
+
+Paste `docs/slices/CONTEXT.md` into any new chat and Claude picks up where you left off. The shape of each doc is load-bearing, not decorative.
 
 ## The workflow
 
@@ -73,7 +82,12 @@ From your project root:
 npx slice-ninja init
 ```
 
-Works in any editor (Claude Code terminal CLI, VSCode extension, Cursor, Codex CLI, Gemini CLI). Safe to run whether or not `.claude/` already exists — it adds `slice-ninja` alongside anything else you've got and skips files that are already there. Pass `--force` to overwrite.
+**Works in any editor:** Claude Code (CLI + VSCode), Cursor, Codex CLI, Gemini CLI.
+
+**Safe to re-run:**
+- Adds `slice-ninja` alongside anything else in `.claude/`
+- Skips files that already exist
+- Use `--force` to overwrite
 
 Commit the folder so your team gets the skill automatically:
 
@@ -146,7 +160,14 @@ Light slices are short enough (~30 lines each) to paste several at once.
 
 ## Who this is for
 
-Small teams (1–5 developers) building complex systems — offline-first apps, sync-heavy backends, multi-role workflows, state-driven architectures. The framework is lightweight enough to maintain but structured enough to prevent architectural decisions from getting lost.
+**Small teams (1–5 developers)** building complex, state-driven systems:
+
+- Offline-first apps
+- Sync-heavy backends
+- Multi-role workflows
+- Anything where architectural decisions get lost in Slack threads
+
+Lightweight enough to maintain. Structured enough to stop decisions from slipping through the cracks.
 
 ## Compatibility
 
