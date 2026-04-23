@@ -36,17 +36,15 @@ Slices should be **small** — small enough to skip backlogs most of the time.
 
 ## Install
 
-Works with **any** Claude Code client (terminal CLI, VSCode extension, Cursor, Codex CLI, Gemini CLI). Pick whichever option fits.
-
-### Option 1 — npx (recommended, works everywhere)
-
 From your project root:
 
 ```bash
 npx slice-ninja init
 ```
 
-Copies `skills/slice-ninja/` and `slice-*.md` commands into `./.claude/`. Commit the folder so your team gets it automatically:
+Works in any editor (Claude Code terminal CLI, VSCode extension, Cursor, Codex CLI, Gemini CLI). Safe to run whether or not `.claude/` already exists — it adds `slice-ninja` alongside anything else you've got and skips files that are already there. Pass `--force` to overwrite.
+
+Commit the folder so your team gets the skill automatically:
 
 ```bash
 git add .claude
@@ -60,27 +58,6 @@ npx slice-ninja init --dry-run    # preview changes
 npx slice-ninja init --force      # overwrite existing files
 npx slice-ninja uninstall         # remove slice-ninja from .claude/
 ```
-
-### Option 2 — manual copy
-
-No Node.js required:
-
-```bash
-git clone https://github.com/anbehindY/slice-ninja.git
-cp -r slice-ninja/skills/slice-ninja your-project/.claude/skills/
-cp slice-ninja/commands/slice-*.md your-project/.claude/commands/
-```
-
-### Option 3 — Claude Code plugin (terminal CLI only)
-
-> Requires the Claude Code terminal CLI. The VSCode extension, Cursor, and similar clients don't currently support `/plugin` — use Option 1 or 2 for those.
-
-```
-/plugin marketplace add anbehindY/slice-ninja
-/plugin install slice-ninja@slice-ninja
-```
-
-Auto-updates on `/plugin marketplace update`. Commands are namespaced as `/slice-ninja:slice-light`, `/slice-ninja:slice-deep`, etc.
 
 ### Claude.ai (upload)
 
