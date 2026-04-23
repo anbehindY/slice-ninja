@@ -38,6 +38,15 @@ Generates editable markdown files that plan features as vertical slices — each
 **What goes in:** risks with severity, mitigation, and **detection signal**; a phased rollout with gates between phases.
 **Why it matters:** naming the detection signal means you'll actually notice the failure mode in prod instead of hearing about it from users. Rollout gates prevent the classic "shipped everything Friday, paged all weekend" — you only flip the next phase once the previous one is provably stable.
 
+### Docs that work for humans AND AI
+
+Each file this skill writes is **dual-purpose**:
+
+- **Fast for humans to skim** — stable short headers, tables instead of prose, explicit out-of-scope lists, mandatory invariants. A PM or a new dev can land on any slice and grasp it in under a minute.
+- **Structured for AI to ingest** — consistent section names across slices, fixed enums (`LIGHT / DEEP`, `P0 / P1 / P2`, `H / M / L`), cross-references between slices and ADRs. The skill itself re-reads the slice map, dependency slices, and ADRs before generating the next slice — the format is the schema that makes that possible. Paste `docs/slices/CONTEXT.md` into any new chat and the AI picks up where you left off.
+
+That's why the templates look the way they do (tables, checkboxes, fixed statuses) rather than free-form prose — the shape of each doc is load-bearing, not decorative.
+
 ## The workflow
 
 ```

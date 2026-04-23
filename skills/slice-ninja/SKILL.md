@@ -7,6 +7,17 @@ description: Plan, design, and document product features as vertical slices usin
 
 Generate editable markdown for vertical slices. Designed for small teams using Claude for both brainstorming and building.
 
+## Design principle: readable for humans, parseable by AI
+
+Every doc this skill writes is dual-purpose:
+
+1. A developer or PM should be able to skim it in under a minute and know what's going on.
+2. Claude (in the next session, with fresh context) must be able to ingest it and rebuild accurate understanding of the feature from it alone.
+
+This is why templates use stable headers, fixed enums, and compact tables instead of prose. It's also why every generate/update command here re-reads the slice map, dependency slices, and ADRs before writing — the skill relies on the same structure it produces. **The templates ARE the schema.** Don't rename a canonical section header on a whim: renaming `## User flow` to `## Flow` in one slice silently breaks cross-slice reasoning for every downstream generation.
+
+If a section doesn't apply, leave it with `[TBD]` or delete it cleanly — don't rename it.
+
 ## Workflow (this is the order)
 
 ```
@@ -47,14 +58,16 @@ Before asking the user anything, scan the project:
 
 ## Template rules
 
-Templates must be READABLE and SCANNABLE:
-- Short headers, not paragraphs
-- Tables for structured data
-- Blockquotes `>` for key decisions or warnings
-- Checkboxes `- [ ]` for actionable items
-- Max 3-5 bullets per section
-- `[TBD]` for unknowns, don't pad
-- Both AI and humans must parse easily
+Templates must be readable by humans AND parseable by Claude on the next run:
+
+- **Stable section headers** — they're the schema, don't rename them
+- **Fixed enums** — status: `LIGHT / DEEP / BUILDING / DONE`, priority: `P0 / P1 / P2`, severity: `H / M / L`, ADR status: `proposed / accepted / superseded`
+- **Short headers, not paragraphs** — skimmable
+- **Tables for structured data** — one row per thing, consistent columns across slices
+- **Blockquotes `>`** for key decisions or warnings (canonical metadata header at top of every slice)
+- **Checkboxes `- [ ]`** for actionable items
+- **Max 3-5 bullets per section** — if more, split it
+- **`[TBD]` for unknowns** — don't pad, don't invent
 
 ## Context sharing
 

@@ -6,10 +6,13 @@
 ## Blocking questions
 - [ ] [unresolved items go here at the TOP]
 
-## Problem & goal
-**Problem:** [1-2 sentences]
-**Goal:** [1 sentence]
-**Success criteria:**
+## Problem
+[1-2 sentences]
+
+## Goal
+[1 sentence]
+
+## Success criteria
 - [ ] [testable]
 - [ ] [testable]
 
