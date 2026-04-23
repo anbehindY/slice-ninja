@@ -16,6 +16,28 @@ Generates editable markdown files that plan features as vertical slices — each
 | **Delivery** | API contracts, decisions, fixed vs deferred |
 | **Risk & Rollout** | What breaks? How do we ship safely? |
 
+### What each block does — and why it earns its spot
+
+#### 1. Outcome
+**What goes in:** problem statement, one-sentence goal, testable success criteria.
+**Why it matters:** gives every later decision something to measure against. Without explicit success criteria you can't tell when the slice is actually done — "looks right" becomes the bar, and scope creeps forever.
+
+#### 2. Boundaries
+**What goes in:** functional scope, non-functional requirements (performance, reliability), hard constraints, and an **explicit out-of-scope list**.
+**Why it matters:** the out-of-scope list is the one that saves you. Features creep unless you name exactly what you're *not* building. The constraints line keeps the designer and the engineer honest about what can't be changed later.
+
+#### 3. Design
+**What goes in:** user flows (happy path + failure branches), entities with key fields, state machines for every status field, invariants, cross-cutting concerns.
+**Why it matters:** state machines kill bugs — if you write down the legal transitions, the illegal ones can't silently happen in prod. Documenting failure branches forces you to answer "what if the network drops here?" during design, not at 2am in the on-call rotation.
+
+#### 4. Delivery
+**What goes in:** API contracts (request, response, errors, retry/idempotency), technical decisions with reasoning, a **fixed-vs-deferred** table, and linked ADRs.
+**Why it matters:** the contract is the seam between planning and building — nailing it down keeps implementation faithful to the design. The fixed-vs-deferred split lets you ship a lean v1 without losing track of what you consciously punted (and why).
+
+#### 5. Risk & Rollout
+**What goes in:** risks with severity, mitigation, and **detection signal**; a phased rollout with gates between phases.
+**Why it matters:** naming the detection signal means you'll actually notice the failure mode in prod instead of hearing about it from users. Rollout gates prevent the classic "shipped everything Friday, paged all weekend" — you only flip the next phase once the previous one is provably stable.
+
 ## The workflow
 
 ```
